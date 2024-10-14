@@ -1,0 +1,1 @@
+;$(document).ready(function(){$('.search-form .TREE-GENERATOR select').trigger('change')});

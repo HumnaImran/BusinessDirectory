@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <?php _widget('head');?>
+    </head>
+    <body class="<?php _widget('custom_paletteclass'); ?>">
+        <header class="header">
+            <?php _widget('custom_header_menu-for-loginuser');?>
+            <?php _widget('header_main');?>
+        </header><!-- /.header -->
+            <?php _widget('top_title_grey');?>
+        <main class="">
+            <section class="section container container-palette" id="content">
+                <div class="container">
+                    <?php if($this->session->userdata('type') != 'VISITOR'):?>
+                    <div class="widget widget-styles">
+                        <div class="header content t-left">
+                            <h2>  <?php _l('Myproperties');?></h2>
+                        </div>
+                        <div class="content-box">
+                            <div class="content widget-controls"> 
+                                <?php echo anchor('frontend/editproperty/'.$lang_code.'#content', '<i class="fa fa-plus"></i>&nbsp;&nbsp;'.lang_check('Addproperty'), 'class="btn btn-middle btn-info"')?>
+
+                                <?php if(file_exists(APPPATH.'controllers/admin/booking.php')):?>
+                                    <?php echo anchor('rates/payments/'.$lang_code.'#content', '<i class="fa fa-book"></i>&nbsp;&nbsp;'.lang_check('Payments received'), 'class="btn btn-middle btn-primary pull-right"')?>
+                                    <?php echo anchor('rates/index/'.$lang_code.'#content', '<i class="fa fa-calendar"></i>&nbsp;&nbsp;'.lang_check('Edit availability and rates'), 'class="btn btn-middle pull-right" style="margin-right:5px;"')?>
+                                <?php endif; ?>
+                            </div>
+                            <div class="box-alert">
+                                    <?php if($this->session->flashdata('error')):?>
+                                    <p class="alert alert-error"><?php echo $this->session->flashdata('error')?></p>
+                                    <?php endif;?>
+                                    <?php if($this->session->flashdata('message')):?>
+                                    <?php echo $this->session->flashdata('message')?>
+                                    <?php endif;?>
+                                </div>
+                                <table class="table table-striped footable-sort" data-sorting="true">
+                                    <thead>
+                                        <th>#</th>
+                                        <th data-breakpoints="xs sm md"  data-type="html"><?php echo lang('Address');?></th>
+                                        <!-- Dynamic generated -->
+                                        <?php foreach($this->option_m->get_visible($content_language_id) as $row):?>
+                                        <th data-breakpoints="xs sm md"  data-type="html"><?php echo $row->option?></th>
+                                        <?php endforeach;?>
+                                        <!-- End dynamic generated -->
+                                        <th data-breakpoints="xs md"  data-type="html"></th>
+                                        <th data-breakpoints="xs sm md" class="control"  data-type="html"><?php echo lang('Edit');?></th>
+                                        <th data-breakpoints="xs sm md" class="control"  data-type="html"><?php echo lang('Delete');?></th>
+                                    </thead>
+                                    <tbody>
+                                        <?php if(sw_count($estates)): foreach($estates as $estate):?>
+                                        <tr>
+                                            <td><?php echo $estate->id?></td>
+                                            <td>
+                                            <?php echo anchor('frontend/editproperty/'.$lang_code.'/'.$estate->id, _ch($estate->address) )?>
+                                            <?php if($estate->is_activated == 0):?>
+                                            &nbsp;<span class="label label-important"><?php echo lang_check('Not activated')?></span>
+                                            <?php endif;?>
+
+                                            <?php if( isset($settings_listing_expiry_days) && $settings_listing_expiry_days > 0 && strtotime($estate->date_modified) <= time()-$settings_listing_expiry_days*86400): ?>
+                                            &nbsp;<span class="label label-warning"><?php echo lang_check('Expired')?></span>
+                                            <?php endif; ?>
+                                            </td>
+                                            <!-- Dynamic generated -->
+                                            <?php foreach($this->option_m->get_visible($content_language_id) as $row):?>
+                                            <td><?php echo isset($options[$estate->id][$row->option_id])?$options[$estate->id][$row->option_id]:''?></td>
+                                            <?php endforeach;?>
+                                            <!-- End dynamic generated -->
+                                            <td>
+                                            <?php if($estate->is_activated == 0 && $settings_activation_price > 0  && config_db_item('payments_enabled') == 1):?>
+                                                <div class="btn-group">
+                                                <a class="btn btn-middle btn-warning dropdown-toggle" data-toggle="dropdown" href="#">
+                                                <?php echo '<i class="fa fa-shopping-cart"></i> '.lang('Pay for activation'); ?>
+                                                <span class="caret"></span>
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <?php if(!_empty(config_db_item('paypal_email'))): ?>
+                                                    <li><a href="<?php echo site_url('frontend/do_purchase_activation/'.$lang_code.'/'.$estate->id.'/'.$settings_activation_price); ?>"><?php echo '<i class="fa fa-shopping-cart"></i> '.lang('Pay for activation').' '.lang_check('with PayPal'); ?></a></li>
+                                                    <?php endif; ?>
+
+                                                    <?php if(file_exists(APPPATH.'controllers/paymentconsole.php') && !_empty(config_db_item('authorize_api_login_id'))): ?>
+                                                    <li><a href="<?php echo site_url('paymentconsole/authorize_payment/'.$lang_code.'/'.$settings_activation_price.'/'.$settings_default_currency.'/'.$estate->id.'/ACT'); ?>"><?php echo '<i class="fa fa-shopping-cart"></i> '.lang('Pay for activation').' '.lang_check('with CreditCard'); ?></a></li>
+                                                    <?php endif; ?>
+
+                                                    <?php if(!empty($settings_withdrawal_details) && file_exists(APPPATH.'controllers/paymentconsole.php')):?>
+                                                    <li><a href="<?php echo site_url('paymentconsole/invoice_payment/'.$lang_code.'/'.$settings_activation_price.'/'.$settings_default_currency.'/'.$estate->id.'/ACT'); ?>"><?php echo '<i class="fa fa-shopping-cart"></i> '.lang('Buy/Extend').' '.lang_check('with bank payment'); ?></a></li>
+                                                    <?php endif; ?>
+                                                </ul>
+                                                </div>
+                                            <?php endif;?>
+
+                                            <?php if($estate->is_featured == 0 && $estate->is_activated == 1):?>
+                                                <?php if($this->packages_m->get_available_featured() > 0): ?>
+                                                <a class="btn btn-middle btn-primary" href="<?php echo site_url('fproperties/make_featured/'.$lang_code.'/'.$estate->id.'/'); ?>">
+                                                <?php echo '<i class="fa fa-circle-arrow-up"></i> '.lang_check('Make featured'); ?>
+                                                </a>
+                                            <?php elseif($settings_featured_price > 0 && config_db_item('payments_enabled') == 1): ?>                        
+                                                <div class="btn-group">
+                                                <a class="btn btn-middle btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                                                <?php echo '<i class="fa fa-shopping-cart"></i> '.lang_check('Pay for featured'); ?>
+                                                <span class="caret"></span>
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <?php if(!_empty(config_db_item('paypal_email'))): ?>
+                                                    <li><a href="<?php echo site_url('frontend/do_purchase_featured/'.$lang_code.'/'.$estate->id.'/'.$settings_featured_price); ?>"><?php echo '<i class="fa fa-shopping-cart"></i> '.lang('Pay for featured').' '.lang_check('with PayPal'); ?></a></li>
+                                                    <?php endif; ?>
+
+                                                    <?php if(file_exists(APPPATH.'controllers/paymentconsole.php') && !_empty(config_db_item('authorize_api_login_id'))): ?>
+                                                    <li><a href="<?php echo site_url('paymentconsole/authorize_payment/'.$lang_code.'/'.$settings_featured_price.'/'.$settings_default_currency.'/'.$estate->id.'/FEA'); ?>"><?php echo '<i class="fa fa-shopping-cart"></i> '.lang('Pay for featured').' '.lang_check('with CreditCard'); ?></a></li>
+                                                    <?php endif; ?>
+
+                                                    <?php if(!empty($settings_withdrawal_details) && file_exists(APPPATH.'controllers/paymentconsole.php')):?>
+                                                    <li><a href="<?php echo site_url('paymentconsole/invoice_payment/'.$lang_code.'/'.$settings_featured_price.'/'.$settings_default_currency.'/'.$estate->id.'/FEA'); ?>"><?php echo '<i class="fa fa-shopping-cart"></i> '.lang('Buy/Extend').' '.lang_check('with bank payment'); ?></a></li>
+                                                    <?php endif; ?>
+                                                </ul>
+                                                </div>
+                                            <?php endif;?>
+                                            <?php endif;?>
+                                            </td>
+                                            <td><?php echo anchor('frontend/editproperty/'.$lang_code.'/'.$estate->id, '<i class="fa fa-edit"></i> '.lang('Edit'), array('class'=>'btn btn-middle btn-info'))?></td>
+                                            <td><?php echo anchor('frontend/deleteproperty/'.$lang_code.'/'.$estate->id, '<i class="fa fa-remove"></i> '.lang('Delete'), array('onclick' => 'return confirm(\''.lang_check('Are you sure?').'\')', 'class'=>'btn btn-middle btn-danger'))?></td>
+                                        </tr>
+                                        <?php endforeach;?>
+                                        <?php else:?>
+                                            <tr>
+                                                <td colspan=""><?php echo lang_check('You can add your first property');?></td>
+                                            </tr>
+                                        <?php endif;?>      
+                                    </tbody>
+                                </table>
+                                <div class="box-body">
+                                <?php if(isset($settings_activation_price) && isset($settings_featured_price) &&
+                                        $settings_activation_price > 0 || $settings_featured_price > 0): ?>
+                                    <p class="row-fluid clearfix">
+                                        <?php if($settings_activation_price > 0): ?>
+                                            <?php echo lang_check('* Property activation price:').' '.$settings_activation_price.' '.$settings_default_currency; ?><br />
+                                         <?php endif;?>
+                                         <?php if($settings_featured_price > 0): ?>
+                                            <?php echo lang_check('* Property featured price:').' '.$settings_featured_price.' '.$settings_default_currency; ?>
+                                         <?php endif;?>
+                                    </p>
+                                <?php endif;?>                               
+                                </div>
+                        </div>
+                    </div> <!-- /. widget -->   
+                    <?php endif; ?>
+                    <?php if($this->session->userdata('type') != 'VISITOR' && file_exists(APPPATH.'controllers/admin/packages.php') && !empty($packages)): ?>
+                    <div class="widget widget-styles">
+                        <div class="header content t-left">
+                            <h2><?php _l('Mypackage');?></h2>
+                        </div>
+                        <div class="content-box">
+                            <div class="box-alert">
+                                <?php if($this->session->flashdata('error_package')):?>
+                                    <p class="alert alert-error"><?php echo $this->session->flashdata('error_package')?></p>
+                                <?php endif;?>
+                            </div>
+                                <table class="table table-striped footable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th data-breakpoints="xs sm"  data-type="html"><?php echo lang_check('Package name');?></th>
+                                        <th data-breakpoints="xs sm"  data-type="html"><?php echo lang_check('Price');?></th>
+                                        <th data-breakpoints="xs sm"  data-type="html"><?php echo lang_check('Free property activation');?></th>
+                                        <th data-breakpoints="xs sm"  data-type="html"><?php echo lang_check('Days limit');?></th>
+                                        <th data-breakpoints="xs sm"  data-type="html"><?php echo lang_check('Listings limit');?></th>
+                                        <th data-breakpoints="xs sm"  data-type="html"><?php echo lang_check('Free featured limit');?></th>
+                                        <th class="control" style="width: 120px;" data-type="html"><?php echo lang('Buy/Extend');?></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    if(sw_count($packages)): foreach($packages as $package):
+
+                                    if(!empty($user['package_id']) && 
+                                       $user['package_id'] != $package->id &&
+                                       strtotime($user['package_last_payment']) >= time() &&
+                                       $packages_days[$package->id] > 0 &&
+                                       $packages_price[$user['package_id']] > 0)
+                                    {
+                                        continue;
+                                    }
+                                    else if(!empty($package->user_type) && $package->user_type != 'USER' && $user['package_id'] != $package->id)
+                                    {
+                                        continue;
+                                    }
+                                    ?>
+                                    <tr>
+                                    	<td><?php echo $package->id; ?></td>
+                                        <td>
+                                        <?php echo $package->package_name; ?>
+                                        <?php echo $package->show_private_listings==1?'&nbsp;<i class="fa fa-eye-open"></i>':'&nbsp;<i class="fa fa-eye-close"></i>'; ?>
+                                        <?php if($user['package_id'] == $package->id):?>
+                                        &nbsp;<span class="label label-success"><?php echo lang_check('Activated'); ?></span>
+                                        <?php else: ?>
+                                        &nbsp;<span class="label label-important"><?php echo lang_check('Not activated'); ?></span>
+                                        <?php endif;?>
+                                        
+                                        <?php if($package->package_price > 0 && $user['package_id'] == $package->id && strtotime($user['package_last_payment']) < time() && $packages_days[$package->id] > 0): ?>
+                                        &nbsp;<span class="label label-warning"><?php echo lang_check('Expired'); ?></span>
+                                        <?php endif; ?>
+                                        </td>
+                                        <td>
+                                        <?php echo $package->package_price.' '.$package->currency_code; ?>
+                                        </td>
+                                        <td><?php echo $package->auto_activation?'<i class="fa fa-check"></i>':''; ?></td>
+                                        <td>
+                                        <?php 
+                                            echo $package->package_days;
+                                            if($user['package_id'] == $package->id && $package->package_price > 0 &&
+                                               strtotime($user['package_last_payment']) >= time() && $packages_days[$package->id] > 0 )
+                                            {
+                                                echo ', '.$user['package_last_payment'];
+                                            }
+                                        ?>
+                                        </td>
+                                        <td>
+                                        <?php echo $package->num_listing_limit?>
+                                        </td>
+                                        <td>
+                                        <?php echo $package->num_featured_limit?>
+                                        </td>
+                                    	<td>
+                                        <?php if($package->package_price > 0  && config_db_item('payments_enabled') == 1): ?>                     
+                                        <div class="btn-group">
+                                        <a class="btn btn-middle btn-info dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <?php echo '<i class="fa fa-shopping-cart"></i> '.lang('Buy/Extend'); ?>
+                                        <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <?php if(!_empty(config_db_item('paypal_email'))): ?>
+                                            <li><a href="<?php echo site_url('frontend/do_purchase_package/'.$lang_code.'/'.$package->id.'/'.$package->package_price); ?>"><?php echo '<i class="fa fa-shopping-cart"></i> '.lang('Buy/Extend').' '.lang_check('with PayPal'); ?></a></li>
+                                            <?php endif; ?>
+                                            <?php if(file_exists(APPPATH.'controllers/paymentconsole.php') && !_empty(config_db_item('authorize_api_login_id'))): ?>
+                                            <li><a href="<?php echo site_url('paymentconsole/authorize_payment/'.$lang_code.'/'.$package->package_price.'/'.$package->currency_code.'/'.$package->id.'/PAC'); ?>"><?php echo '<i class="fa fa-shopping-cart"></i> '.lang('Buy/Extend').' '.lang_check('with CreditCard'); ?></a></li>
+                                            <?php endif; ?>
+                                            <?php if(!empty($settings_withdrawal_details) && file_exists(APPPATH.'controllers/paymentconsole.php')):?>
+                                            <li><a href="<?php echo site_url('paymentconsole/invoice_payment/'.$lang_code.'/'.$package->package_price.'/'.$package->currency_code.'/'.$package->id.'/PAC'); ?>"><?php echo '<i class="fa fa-shopping-cart"></i> '.lang('Buy/Extend').' '.lang_check('with bank payment'); ?></a></li>
+                                            <?php endif; ?>
+                                        </ul>
+                                        </div>
+                                        <?php else: ?> 
+                                            <?php if(config_item('def_package') !== FALSE && config_item('def_package') == $package->id &&  strtotime($user['package_last_payment'])<=time() && $package->id !== $user['package_id']):?>
+                                                <a href="<?php echo site_url('frontend/do_package_activate/'.$lang_code.'/'.config_item('def_package')); ?>" class="btn btn-middle btn-info"><?php echo lang_check('Activate');?></a>
+                                            <?php endif; ?>                               
+                                        <?php endif; ?>                              
+                                        </td>
+                                    </tr>
+                                    <?php endforeach;?>
+                                    <?php else:?>
+                                        <tr>
+                                            <td ><?php echo lang_check('Not available');?></td>
+                                        </tr>
+                                    <?php endif;?>     
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> 
+                    <?php endif;?>
+                    <?php if($this->session->userdata('type') == 'VISITOR'):?>
+                    <div class="widget widget-styles">
+                        <div class="header content t-left">
+                            <h2><?php echo lang_check('Welcome');?></h2>
+                        </div>
+                        <div class="content-box">
+                        <?php echo lang_check('This is dash panel');?>
+                        </div>
+                    </div> 
+                    <?php endif;?>
+                    <?php if($this->session->userdata('type') != 'VISITOR'):?>
+                    <div class="widget widget-styles">
+                        <div class="header content t-left">
+                            <h2><?php _l('WithdrawalDetails');?></h2>
+                        </div>
+                        <div class="content-box">
+                            <?php echo $settings_withdrawal_details; ?><br />
+                            <?php _l('WithdrawalDetailsNotice');?>
+                        </div>
+                    </div> 
+                    <?php endif;?>
+                </div>
+            </section> <!-- /.section-category -->
+        </main>
+        <?php _subtemplate( 'footers', _ch($subtemplate_footer, 'default')); ?>
+        <?php _widget('custom_popup');?>
+        <?php _widget('custom_palette');?>
+        <?php _widget('custom_javascript');?>
+    </body>
+</html>

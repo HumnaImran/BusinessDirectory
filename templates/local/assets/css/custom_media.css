@@ -1,0 +1,216 @@
+@charset 'UTF-8';
+
+/*------------------------------------------------------------------
+[Media Stylesheet]
+-------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------
+[Table of contents]
+
+1. Min width 992px and Max width: 1199px
+2. Max width: 1140px 
+3. Max width: 992px
+4. Max width: 992px and min width: 768px
+5. Max width: 767px
+6. Max width: 480px
+7. Custom media for IE
+
+-------------------------------------------------------------------*/
+
+@media (min-width: 1380px) {
+    .wrap-side .right-side,
+    .wrap-side .left-side {
+        width: initial;
+    }
+    
+    .wrap-side .left-side {
+        -ms-flex: 0 0 681px;
+        -webkit-flex: 0 0 681px;
+        flex: 0 0 681px;
+    }
+    
+    .wrap-side .right-side {
+        -ms-flex: 1 2 auto;
+        -webkit-flex: 1 2 auto;
+        flex: 1 2 auto;
+    }
+}
+
+@media (mx-width: 1379px) {
+    .widget.widget-customside_center_recentlistings .widget-controls-panel {
+        bottom: initial;
+        top: 0;
+        right: 15px;
+    }
+
+}
+
+@media (min-width: 1140px) and (max-width: 1350px) {
+
+}
+
+/*------------------------------------------------------------------
+[1. Min width 992px and Max width: 1199px ]
+*/
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/*------------------------------------------------------------------
+[2. Max width: 1140px ]
+*/
+@media (max-width: 1140px) {
+    .widget-center-recentproperties .thumbnail .caption-footer .list li.hidden_centerwidget-lg {
+        display: inline-block;
+    }
+}
+
+/*------------------------------------------------------------------
+[3. Max width: 991px ]
+*/
+@media (max-width: 991px) {
+
+    
+}
+
+/*------------------------------------------------------------------
+[4. Max width: 992px and min width: 768px]
+*/
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/*------------------------------------------------------------------
+[5. Max width: 767px]
+*/
+@media (max-width: 767px) {
+    
+
+    .location-box {
+      padding: 0 15px;
+    }
+
+    .location-box .preview-image {
+      padding: 0 0;
+    }
+    
+    .top-bar > div > div > .logo {
+        padding-top: 18px;
+    }
+    
+    #main .lang-tabs li.pull-right {
+        width: 100%;
+    }
+
+    #main .lang-tabs li.lang  {
+        margin-bottom: 5px;
+    }
+    
+    #main .control-group .control-label {
+        float: none;
+        width: initial;
+        padding-right: 5px;
+        text-align: left;
+        display: inline-block;
+    }
+    
+    .content.widget-controls > span,
+    .content.widget-controls >.btn {
+        margin: 0;
+        margin-bottom: 10px;
+        width: 100%;
+        display: block;
+    }
+
+    .form-editproperty .form-control {
+        width: 100%;
+    }
+    
+    .section-body {
+        text-align: center;
+    }
+    
+    .section-body .row {
+        margin-bottom: 0;
+    }
+    
+    .section-body [class*="span"] {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    
+    .widget-search-top .c_purpose-tablet {
+        position: relative;
+        top: 0;
+        left: 0;
+        padding: 0 15px;
+        padding-bottom: 10px;
+    }
+    
+    .widget-search-top .c_purpose-tablet:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+    
+    .widget-search-top .c_purpose-tablet li {
+        background: #686868;
+        float: none;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .c_purpose-tablet li.active,
+    .c_purpose-tablet li:hover {
+        background: #da3743;
+    }
+    
+    .container-wide .widget .filters-box {
+        padding-right: 15px;
+    }
+    
+    .wtl-tree .wtl-tree-bread .bread-item {
+        margin-bottom: 5px;
+        display: inline-block;
+    }
+}
+
+/*------------------------------------------------------------------
+[6. Max width: 540px]
+*/
+
+@media (max-width:540px) {
+    .places_select .btn {
+        width: 100%;
+    }
+    
+    .route_suggestion .btn {
+        width: 100%;
+        margin-top: 5px;
+        padding: 0 25px;
+    }
+    
+    .btn-custom {
+        padding-right: 25px;
+        padding-left: 25px;
+    }
+    
+    .widget-title-location .wtl-tree-bread .count {
+        display: none;
+    }
+}
+
+/*------------------------------------------------------------------
+[7. Custom media for IE]
+*/
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+}
+
+@media screen and (max-width:1140px) and (-ms-high-contrast: active) and (-ms-high-contrast: none) {
+}
+
+@media screen and (max-width:768px) and (-ms-high-contrast: active) and (-ms-high-contrast: none) {
+}
