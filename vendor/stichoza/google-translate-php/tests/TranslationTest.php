@@ -19,14 +19,6 @@ class TranslationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($resultOne, $resultTwo, 'გამარჯობა');
     }
 
-    public function testUTF16Translation()
-    {
-        $resultOne = TranslateClient::translate('en', 'de', 'yes 👍🏽');
-        $resultTwo = $this->tr->setSource('en')->setTarget('de')->translate('yes 👍🏽');
-
-        $this->assertEquals($resultOne, $resultTwo, 'ja 👍🏽');
-    }
-
     public function testArrayTranslation()
     {
         $this->tr->setSource('en')->setTarget('ka');

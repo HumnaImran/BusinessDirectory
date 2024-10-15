@@ -1,20 +1,25 @@
 <?php
 
+
 namespace Message;
 
-use Omnipay\AuthorizeNet\Message\AIMAbstractRequest;
-use Omnipay\Tests\TestCase;
-use Mockery;
 
-class AIMAbstractRequestTest extends TestCase
+use Omnipay\AuthorizeNet\Message\AIMAbstractRequest;
+
+class AIMAbstractRequestTest extends \PHPUnit_Framework_TestCase
 {
     /** @var AIMAbstractRequest */
     private $request;
 
     public function setUp()
     {
-        $this->request = Mockery::mock('\Omnipay\AuthorizeNet\Message\AIMAbstractRequest')->makePartial();
-        $this->request->initialize();
+        $this->request = $this->getMockForAbstractClass(
+            '\Omnipay\AuthorizeNet\Message\AIMAbstractRequest',
+            array(
+                $this->getMock('\Guzzle\Http\ClientInterface'),
+                $this->getMock('\Symfony\Component\HttpFoundation\Request')
+            )
+        );
     }
 
     public function testShouldReturnTransactionReference()

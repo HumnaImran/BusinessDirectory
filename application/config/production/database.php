@@ -51,9 +51,9 @@ $active_record = TRUE;
 
 //MySQL example
 $db['mysql']['hostname'] = 'localhost';
-$db['mysql']['username'] = 'root';
-$db['mysql']['password'] = '';
-$db['mysql']['database'] = 'DirectoryListing';
+$db['mysql']['username'] = 'dotapp_BussinessListing';
+$db['mysql']['password'] = 'BussinessListing';
+$db['mysql']['database'] = 'dotapp_BussinessListing';
 $db['mysql']['dbdriver'] = 'mysqli';
 $db['mysql']['dbprefix'] = '';
 $db['mysql']['pconnect'] = FALSE;

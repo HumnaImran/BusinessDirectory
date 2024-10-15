@@ -20,8 +20,7 @@ class AIMAuthorizeRequestTest extends TestCase
                 'amount' => '12.00',
                 'customerId' => 'cust-id',
                 'card' => $card,
-                'duplicateWindow' => 0,
-                'solutionId' => 'SOL12345ID',
+                'duplicateWindow' => 0
             )
         );
     }
@@ -34,7 +33,6 @@ class AIMAuthorizeRequestTest extends TestCase
         $this->assertEquals('10.0.0.1', $data->transactionRequest->customerIP);
         $this->assertEquals('cust-id', $data->transactionRequest->customer->id);
         $this->assertEquals('example@example.net', $data->transactionRequest->customer->email);
-        $this->assertEquals('SOL12345ID', $data->transactionRequest->solution->id);
 
         // Issue #38 Make sure the transactionRequest properties are correctly ordered.
         // This feels messy, but works.
@@ -45,7 +43,6 @@ class AIMAuthorizeRequestTest extends TestCase
             "transactionType",
             "amount",
             "payment",
-            "solution",
             "order",
             "customer",
             "billTo",

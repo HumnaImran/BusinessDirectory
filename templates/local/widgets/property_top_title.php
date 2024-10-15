@@ -30,38 +30,6 @@ if(!empty($estate_data_option_79)){
 ?>
 
 
-
-<style>
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 5px 13px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
-
-    </style>
 <div class="widget container container-palette widget-listing-title widget_edit_enabled">
     <div class="container wb">
         <div class="row">
@@ -108,22 +76,9 @@ if(!empty($estate_data_option_79)){
                 <?php endif; ?>
 
                 <?php _widget('custom_property_report');?>
-                <div class="dropdown">
-    <button class="btn btn-custom-s btn-custom-default"><i class="ion-share"></i>  Share</button>
-    <div class="dropdown-content">
-        <a href="https://www.facebook.com/share.php?u={page_current_url}&title={page_title}" 
-           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Facebook</a>
-        <a href="https://twitter.com/intent/tweet?url={page_current_url}&text={page_title}" 
-           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Twitter</a>
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url={page_current_url}" 
-           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">LinkedIn</a>
-        <a href="https://api.whatsapp.com/send?text={page_title} {page_current_url}" 
-           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">WhatsApp</a>
-    </div>
-</div>
 
 
-                
+                <a class="btn btn-custom-s btn-custom-default" href="https://www.facebook.com/share.php?u={page_current_url}&title={page_title}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><i class="ion-share"></i>Share</a>  
             </div>
         </div>
     </div>

@@ -4,12 +4,13 @@ Widget-title: Recentlistings results no header
 Widget-preview-image: /assets/img/widgets_preview/center_recentlistings_noheader.jpg
  */
 ?>
+
 <section class="section widget-recentproperties widget-center-recentproperties bg-default pt35 widget_edit_enabled">
     <div class="header">
         <div class="filters filters-box list-view-box clearfix no-padding-v no-padding-wide-h">
             <div class="hidden-xs grid-type">
-                <a href="#" class="view-type grid" data-ref="grid"><i class="fa fa-th"></i></a>
-                <a href="#" class="view-type list active" data-ref="list"><i class="fa fa-list"></i></a>
+                <a href="#" class="view-type grid active" data-ref="grid"><i class="fa fa-th"></i></a>
+                <a href="#" class="view-type list" data-ref="list"><i class="fa fa-list"></i></a>
             </div>
             <div class="sort-filter">
                 <label><?php _l('OrderBy'); ?></label>
@@ -45,5 +46,4 @@ Widget-preview-image: /assets/img/widgets_preview/center_recentlistings_noheader
         <div class="result_preload_indic"></div>
     </div>
 </section>
-
             

@@ -11,13 +11,5 @@
         "stichoza/google-translate-php": "~3.2",
         "league/oauth2-google": "~1.0",
         "league/oauth2-facebook": "~1.0"
-    },
-    "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.4"
-    },
-    "config": {
-        "allow-plugins": {
-            "kylekatarnls/update-helper": true
-        }
     }
 }

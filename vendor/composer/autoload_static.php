@@ -8,44 +8,23 @@ class ComposerStaticInit126e5b2cd07e6078e52da987ffc61603
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
-        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
-        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
-        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
-        '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
+        '7e702cccdb9dd904f2ccf22e5f37abae' => __DIR__ . '/..' . '/facebook/php-sdk-v4/src/Facebook/polyfills.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
-            'Symfony\\Polyfill\\Intl\\Normalizer\\' => 33,
-            'Symfony\\Polyfill\\Intl\\Idn\\' => 26,
-            'Symfony\\Polyfill\\Ctype\\' => 23,
-            'Symfony\\Component\\VarDumper\\' => 28,
-            'Symfony\\Component\\Translation\\' => 30,
-            'Symfony\\Component\\Routing\\' => 26,
-            'Symfony\\Component\\OptionsResolver\\' => 34,
-            'Symfony\\Component\\HttpKernel\\' => 29,
             'Symfony\\Component\\HttpFoundation\\' => 33,
-            'Symfony\\Component\\Finder\\' => 25,
             'Symfony\\Component\\EventDispatcher\\' => 34,
-            'Symfony\\Component\\Debug\\' => 24,
             'Stichoza\\GoogleTranslate\\' => 25,
         ),
         'P' => 
         array (
-            'Psr\\SimpleCache\\' => 16,
-            'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
-            'Psr\\Http\\Client\\' => 16,
-            'Psr\\Container\\' => 14,
         ),
         'O' => 
         array (
@@ -58,22 +37,6 @@ class ComposerStaticInit126e5b2cd07e6078e52da987ffc61603
         array (
             'League\\OAuth2\\Client\\' => 21,
         ),
-        'I' => 
-        array (
-            'Illuminate\\Support\\' => 19,
-            'Illuminate\\Session\\' => 19,
-            'Illuminate\\Routing\\' => 19,
-            'Illuminate\\Pipeline\\' => 20,
-            'Illuminate\\Http\\' => 16,
-            'Illuminate\\Filesystem\\' => 22,
-            'Illuminate\\Contracts\\' => 21,
-            'Illuminate\\Container\\' => 21,
-        ),
-        'H' => 
-        array (
-            'Http\\Promise\\' => 13,
-            'Http\\Client\\' => 12,
-        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
@@ -84,17 +47,6 @@ class ComposerStaticInit126e5b2cd07e6078e52da987ffc61603
         array (
             'Facebook\\' => 9,
         ),
-        'D' => 
-        array (
-            'Doctrine\\Inflector\\' => 19,
-            'Doctrine\\Common\\Inflector\\' => 26,
-            'DebugBar\\' => 9,
-        ),
-        'B' => 
-        array (
-            'Buzz\\' => 5,
-            'Barryvdh\\Debugbar\\' => 18,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -102,78 +54,21 @@ class ComposerStaticInit126e5b2cd07e6078e52da987ffc61603
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'Symfony\\Polyfill\\Intl\\Normalizer\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer',
-        ),
-        'Symfony\\Polyfill\\Intl\\Idn\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-intl-idn',
-        ),
-        'Symfony\\Polyfill\\Ctype\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
-        ),
-        'Symfony\\Component\\VarDumper\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/var-dumper',
-        ),
-        'Symfony\\Component\\Translation\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/translation',
-        ),
-        'Symfony\\Component\\Routing\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/routing',
-        ),
-        'Symfony\\Component\\OptionsResolver\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/options-resolver',
-        ),
-        'Symfony\\Component\\HttpKernel\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/http-kernel',
-        ),
         'Symfony\\Component\\HttpFoundation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/http-foundation',
-        ),
-        'Symfony\\Component\\Finder\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/finder',
         ),
         'Symfony\\Component\\EventDispatcher\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
         ),
-        'Symfony\\Component\\Debug\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/debug',
-        ),
         'Stichoza\\GoogleTranslate\\' => 
         array (
             0 => __DIR__ . '/..' . '/stichoza/google-translate-php/src/Stichoza/GoogleTranslate',
         ),
-        'Psr\\SimpleCache\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
-        ),
-        'Psr\\Log\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
-        ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
-        ),
-        'Psr\\Http\\Client\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/http-client/src',
-        ),
-        'Psr\\Container\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/container/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Omnipay\\Stripe\\' => 
         array (
@@ -193,49 +88,9 @@ class ComposerStaticInit126e5b2cd07e6078e52da987ffc61603
         ),
         'League\\OAuth2\\Client\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/oauth2-client/src',
-            1 => __DIR__ . '/..' . '/league/oauth2-facebook/src',
-            2 => __DIR__ . '/..' . '/league/oauth2-google/src',
-        ),
-        'Illuminate\\Support\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/illuminate/support',
-        ),
-        'Illuminate\\Session\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/illuminate/session',
-        ),
-        'Illuminate\\Routing\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/illuminate/routing',
-        ),
-        'Illuminate\\Pipeline\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/illuminate/pipeline',
-        ),
-        'Illuminate\\Http\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/illuminate/http',
-        ),
-        'Illuminate\\Filesystem\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/illuminate/filesystem',
-        ),
-        'Illuminate\\Contracts\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/illuminate/contracts',
-        ),
-        'Illuminate\\Container\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/illuminate/container',
-        ),
-        'Http\\Promise\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/php-http/promise/src',
-        ),
-        'Http\\Client\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/php-http/httplug/src',
+            0 => __DIR__ . '/..' . '/league/oauth2-google/src',
+            1 => __DIR__ . '/..' . '/league/oauth2-client/src',
+            2 => __DIR__ . '/..' . '/league/oauth2-facebook/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
@@ -253,40 +108,9 @@ class ComposerStaticInit126e5b2cd07e6078e52da987ffc61603
         array (
             0 => __DIR__ . '/..' . '/facebook/php-sdk-v4/src/Facebook',
         ),
-        'Doctrine\\Inflector\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector',
-        ),
-        'Doctrine\\Common\\Inflector\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
-        ),
-        'DebugBar\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/maximebf/debugbar/src/DebugBar',
-        ),
-        'Buzz\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kriswallsmith/buzz/lib',
-        ),
-        'Barryvdh\\Debugbar\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src',
-        ),
-    );
-
-    public static $fallbackDirsPsr4 = array (
-        0 => __DIR__ . '/..' . '/nesbot/carbon/src',
     );
 
     public static $prefixesPsr0 = array (
-        'U' => 
-        array (
-            'UpdateHelper\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/kylekatarnls/update-helper/src',
-            ),
-        ),
         'S' => 
         array (
             'Stichoza\\GoogleTranslate\\' => 
@@ -323,11 +147,16 @@ class ComposerStaticInit126e5b2cd07e6078e52da987ffc61603
                 0 => __DIR__ . '/..' . '/guzzle/guzzle/src',
             ),
         ),
+        'B' => 
+        array (
+            'Buzz' => 
+            array (
+                0 => __DIR__ . '/..' . '/kriswallsmith/buzz/lib',
+            ),
+        ),
     );
 
     public static $classMap = array (
-        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'Omnipay\\Omnipay' => __DIR__ . '/..' . '/omnipay/common/src/Omnipay/Omnipay.php',
     );
 
@@ -336,7 +165,6 @@ class ComposerStaticInit126e5b2cd07e6078e52da987ffc61603
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit126e5b2cd07e6078e52da987ffc61603::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit126e5b2cd07e6078e52da987ffc61603::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInit126e5b2cd07e6078e52da987ffc61603::$fallbackDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit126e5b2cd07e6078e52da987ffc61603::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit126e5b2cd07e6078e52da987ffc61603::$classMap;
 
