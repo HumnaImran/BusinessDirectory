@@ -116,23 +116,7 @@ if(isset($options_name_79)){
                 <div class="grid-tiles">
                     <?php foreach ($treefields as $key=>$item): ?>
                         <?php if(empty(trim($item['title'])))continue;?>
-                        <div class="grid-tile">
-                            <?php if($treefield_id==79):?>
-                            <a href='<?php _che($item['url']);?>'  data-type="<?php _che($item['title']);?> -">
-                            <?php else:?>
-                            <a href='<?php _che($item['url']);?>'  data-type="<?php _che($item['title']);?>">
-                            <?php endif;?>
-                                <div class="preview">
-                                    <?php if(false):?>
-                                    <img src="<?php echo $item['image_url_second'];?>" alt="<?php _che($item['title']);?>" class="icon">
-                                    <?php endif;?>
-                                    <i class="<?php _che($item['font_icon_code'], 'fa fa-cubes') ;?>"></i>
-                                </div>
-                                <div class="caption">
-                                    <h2 class="title"><?php _che($item['title']);?></h2>
-                                </div>
-                            </a>
-                        </div>                    
+                                          
                     <?php endforeach; ?>
                 </div>
             </div>
