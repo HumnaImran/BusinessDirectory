@@ -89,7 +89,7 @@ if(isset($options_name_79)){
         </div>
         <div class="filters filters-box clearfix">
             <div class="hidden-xs grid-type">
-                <a href="#" class="view-type grid active" data-ref="grid"><i class="fa fa-th"></i></a>
+                <!-- <a href="#" class="view-type grid active" data-ref="grid"><i class="fa fa-th"></i></a> -->
                 <a href="#" class="view-type list" data-ref="list"><i class="fa fa-list"></i></a>
             </div>
             <div class="sort-filter">
